@@ -1,24 +1,20 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/PraneGIT/go-webRTC/server"
-	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
 
 	server.AllRooms.Init()
 
-	app := fiber.New()
+	http.HandleFunc("/create", server.CreateRoomHandler)
 
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, webRTC-go 👋!")
-	})
+	http.HandleFunc("/join/{id}", server.JoinRoomHandler)
 
-	api := app.Group("/webRTC")
-	api.Get("/create", server.CreateRoomHandler)
+	println("server running on port 3000...")
+	http.ListenAndServe(":3000", nil)
 
-	api.Get("/join:roomId", server.JoinRoomHandler)
-
-	app.Listen(":3000")
 }
