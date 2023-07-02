@@ -24,6 +24,7 @@ type Room struct {
 // inits room
 func (r *Room) Init() {
 	r.RoomMap = make(map[string][]Participant)
+	log.Println("new room init")
 }
 
 // create a new room
