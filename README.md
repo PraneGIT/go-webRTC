@@ -1,5 +1,5 @@
 # go-webRTC
-server side implementation of WebRTC in go using gorila/websockets
+server side implementation of WebRTC in go using gorilla/websockets
 
 
 
