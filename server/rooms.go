@@ -70,15 +70,8 @@ func (r *Room) AddParticipants(roomId string, host bool, conn *websocket.Conn) {
 		Host: host,
 	}
 
-	room, err := r.RoomMap[roomId]
-	//return error if no room
-	if err == false {
-		log.Println("No room to add participant")
-		return
-	}
-
+	r.RoomMap[roomId] = append(r.RoomMap[roomId], participant)
 	log.Println("Inserting into Room with RoomID: ", roomId)
-	room = append(room, participant)
 }
 
 // delete room

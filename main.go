@@ -12,7 +12,7 @@ func main() {
 
 	http.HandleFunc("/create", server.CreateRoomHandler)
 
-	http.HandleFunc("/join/{id}", server.JoinRoomHandler)
+	http.HandleFunc("/join", server.JoinRoomHandler)
 
 	println("server running on port 3000...")
 	http.ListenAndServe(":3000", nil)
